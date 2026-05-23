@@ -24,7 +24,7 @@
 
 <br />
 
-> 🏆 **DevFusion: The Developers Hackathon 2.0**  
+> 🏆 **DevFusion 2.0 | The Developers Hackathon**  
 > Problem Statement: **DevCollab — Real-Time Project Collaboration Platform for Developers**
 
 <br />
@@ -86,9 +86,6 @@ DevCollab is a full-featured developer collaboration platform where teams can:
 | **Build Tool** | Vite with PostCSS + Autoprefixer |
 | **Canvas / Whiteboard** | HTML5 Canvas API |
 | **Syntax Highlighting** | Custom keyword-based tokeniser (no external lib) |
-
-> **No backend or database is required to run the project.** All state is managed in-memory via React Context, making it instantly runnable for demo purposes.
-
 ---
 
 ## ✅ Features Built
@@ -167,105 +164,21 @@ DevCollab is a full-featured developer collaboration platform where teams can:
 
 ---
 
-## 🖥 Run Locally
-
-Follow these steps to get DevCollab running on your machine in under 2 minutes.
-
-### Prerequisites
-
-- **Node.js** v18 or higher — [Download here](https://nodejs.org)
-- **npm** v9 or higher (comes with Node)
-
-### Steps
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/your-team/devcollab.git
-cd devcollab
-
-# 2. Install dependencies
-npm install
-
-# 3. Start the development server
-npm run dev
-```
-
-Then open your browser at **http://localhost:5173**
-
-### Login
-
-The app uses a simulated auth system — enter **any email and password** to sign in. No backend required.
-
-### Build for Production
-
-```bash
-npm run build       # outputs to /dist
-npm run preview     # preview the production build locally
-```
-
-> ℹ️ The project is entirely frontend — no `.env` file, no API keys, no database setup needed for the demo.
-
----
-
-## 🌐 Live Demo
-
-> 🔗 **[https://devcollab.vercel.app](https://devcollab.vercel.app)**  
-> *(Replace with your actual deployment URL)*
-
-Deployed on **Vercel** — CI/CD from the main branch.
-
----
-
 ## 👥 Team
 
 | Name | Role | GitHub |
 |---|---|---|
-| **Rahul Kumar** | Full-Stack Lead & Architecture | [@rahulkumar](https://github.com) |
-| **Ankush Sharma** | Frontend Lead — Kanban, Whiteboard, Animations | [@ankushsharma](https://github.com) |
-| **Riya Mehta** | Backend & AI Integration — Context, AI pages | [@riyamehta](https://github.com) |
-| **Sneha Patil** | UI/UX Design — Component library, Design system | [@snehapatil](https://github.com) |
-| **Dev Joshi** | DevOps & Tooling — Vite config, build, deploy | [@devjoshi](https://github.com) |
-
-> ✏️ *Update names, roles, and GitHub links to match your actual team.*
-
----
-
-## 🐛 Known Bugs & Limitations
-
-We believe in transparency — here's what we know:
-
-| Issue | Details |
-|---|---|
-| **No real backend** | All data lives in React state and resets on page refresh. A production version would use Node.js + PostgreSQL + Socket.IO. |
-| **AI responses are hardcoded** | The AI Assistant and Code Reviewer return scripted responses keyed to specific inputs. Integrating a live LLM (Claude, GPT-4) is the natural next step. |
-| **No real Socket.IO** | Real-time collaboration is simulated via scripted setTimeout events. True multi-user sync requires a WebSocket server. |
-| **Auth is mock** | Any non-empty email/password logs you in. No real JWT, sessions, or security. |
-| **Whiteboard AI is simulated** | The "AI Analyse" button cycles through preset analysis responses rather than reading actual canvas pixels via a vision model. |
-| **Wiki editor is basic** | The rich-text editor is a custom textarea — no true block editor (like Tiptap or Lexical) is wired up. |
-| **No file uploads** | Attachment names are stored as strings. Actual file upload/storage (S3, Cloudinary) is not implemented. |
-| **Payments are sandbox** | The checkout flow is a UI demo — no Stripe or Razorpay integration is live. |
-| **Mobile responsiveness** | The app is optimised for desktop (≥1024px). Some pages may overflow on small screens. |
-
----
-
-## 🗺 What's Next (Post-Hackathon Roadmap)
-
-- [ ] Real Node.js + Express backend with PostgreSQL
-- [ ] Socket.IO for true multi-user real-time sync
-- [ ] Live Claude / GPT-4 Vision integration for Whiteboard AI Analyse
-- [ ] Tiptap rich-text editor for the Wiki
-- [ ] GitHub OAuth login
-- [ ] Stripe payment integration
-- [ ] Mobile-responsive redesign
-- [ ] End-to-end tests with Playwright
-
+| **Shravani Hajare** | Backend & AI Integration — Context, AI pages | [@shravanihajare07@gmail.com](https://github.com/shravanihaj74) |
+| **Omkar Mohire** | Frontend Lead — Kanban, Whiteboard, Animations | [@omkarmohire22@gmail.com](https://github.com/omkarmohire22) |
+| **Khushi Chile** | UI/UX Design — Component library, Design system | [@khushichile2004@gmail.com](https://github.com/khushi-io) |
+| **Vinit Dalal** | DevOps & Tooling — Vite config, build, deploy | [@vinitdalal05032004@gmail.com]([https://github.com](https://github.com/vinitdalal05032004-bit)) |
 ---
 
 <div align="center">
 
 <br />
 
-**Built with ❤️ in 24 hours at DevFusion: The Developers Hackathon 2.0**
+**Built with confidence in 10 days at DevFusion 2.0 | The Developers Hackathon**
 
 *If you found this project useful or interesting, please consider giving it a ⭐ on GitHub!*
 
