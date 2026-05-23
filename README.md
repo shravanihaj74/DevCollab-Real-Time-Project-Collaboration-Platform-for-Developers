@@ -168,10 +168,10 @@ DevCollab is a full-featured developer collaboration platform where teams can:
 
 | Name | Role | GitHub |
 |---|---|---|
-| **Shravani Hajare** | Backend & AI Integration — Context, AI pages | [@shravanihajare07@gmail.com](https://github.com/shravanihaj74) |
-| **Omkar Mohire** | Frontend Lead — Kanban, Whiteboard, Animations | [@omkarmohire22@gmail.com](https://github.com/omkarmohire22) |
-| **Khushi Chile** | UI/UX Design — Component library, Design system | [@khushichile2004@gmail.com](https://github.com/khushi-io) |
-| **Vinit Dalal** | DevOps & Tooling — Vite config, build, deploy | [@vinitdalal05032004@gmail.com](https://github.com/vinitdalal05032004-bit) |
+| **Shravani Hajare** | Backend & AI Integration — Context, AI pages | [@shravanihajare](https://github.com/shravanihaj74) |
+| **Omkar Mohire** | Frontend Lead — Kanban, Whiteboard, Animations | [@omkarmohire](https://github.com/omkarmohire22) |
+| **Khushi Chile** | UI/UX Design — Component library, Design system | [@khushichile](https://github.com/khushi-io) |
+| **Vinit Dalal** | DevOps & Tooling — Vite config, build, deploy | [@vinitdalal](https://github.com/vinitdalal05032004-bit) |
 ---
 
 <div align="center">
