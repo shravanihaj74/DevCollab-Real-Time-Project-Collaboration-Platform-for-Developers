@@ -230,6 +230,44 @@ export default function DevPulsePage() {
           ))}
         </div>
 
+      {/* Overdue warnings banner */}
+        {MEMBERS.filter(m => m.overdue > 0).length > 0 && (
+          <motion.div
+            className="rounded-2xl border border-red-100 bg-red-50 px-5 py-4"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <motion.span
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
+                className="text-lg"
+              >
+                ⚠️
+              </motion.span>
+              <p className="font-bold text-red-700">Overdue Task Warnings</p>
+              <motion.span
+                className="ml-auto rounded-full bg-red-500 px-2.5 py-0.5 text-[10px] font-bold text-white"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                {MEMBERS.reduce((sum, m) => sum + m.overdue, 0)} overdue
+              </motion.span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {MEMBERS.filter(m => m.overdue > 0).map(m => (
+                <div key={m.name} className="flex items-center gap-2 rounded-xl bg-white border border-red-100 px-3 py-2">
+                  <div className={`flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br ${m.avatar} text-[10px] font-bold text-white`}>
+                    {m.name[0]}
+                  </div>
+                  <span className="text-xs font-semibold text-red-700">{m.name}</span>
+                  <span className="rounded-full bg-red-100 px-1.5 py-0.5 text-[10px] font-bold text-red-600">{m.overdue} overdue</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Member cards */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {MEMBERS.map((m, i) => <MemberCard key={m.name} member={m} i={i} />)}

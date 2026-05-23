@@ -142,16 +142,27 @@ export default function DashboardPage() {
       title="Dashboard"
       subtitle="DevFusion Team · 6 projects"
       actions={
-        <motion.button
-          className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-indigo-200"
-          whileHover={{ scale: 1.05, boxShadow: "0 8px 24px rgba(79,70,229,0.4)" }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-            <path d="M7 1v12M1 7h12" />
-          </svg>
-          New Project
-        </motion.button>
+        <div className="flex gap-2">
+          <motion.button
+            className="flex items-center gap-2 rounded-xl border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/workspace/settings")}
+          >
+            ⚙️ Settings
+          </motion.button>
+          <motion.button
+            className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-indigo-200"
+            whileHover={{ scale: 1.05, boxShadow: "0 8px 24px rgba(79,70,229,0.4)" }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/new-project")}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+              <path d="M7 1v12M1 7h12" />
+            </svg>
+            New Project
+          </motion.button>
+        </div>
       }
     >
       <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-6">

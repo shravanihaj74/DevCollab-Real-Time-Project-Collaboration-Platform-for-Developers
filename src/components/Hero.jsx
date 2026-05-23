@@ -179,7 +179,7 @@ export default function Hero() {
                 boxShadow: "0 20px 60px rgba(79,70,229,0.5)",
               }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => navigate("/dashboard")}
+              onClick={() => navigate("/create-workspace")}
             >
               Start for Free
             </motion.button>
