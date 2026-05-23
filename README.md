@@ -39,11 +39,7 @@
 - [What It Does](#-what-it-does)
 - [Tech Stack](#-tech-stack)
 - [Features Built](#-features-built)
-- [Screenshots](#-screenshots)
-- [Run Locally](#-run-locally)
-- [Live Demo](#-live-demo)
 - [Team](#-team)
-- [Known Limitations](#-known-limitations)
 
 ---
 
