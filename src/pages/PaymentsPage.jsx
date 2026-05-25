@@ -9,17 +9,17 @@ const PLANS = [
     id: "free", name: "Free", price: 0, period: "forever",
     color: "from-gray-400 to-gray-500", badge: null,
     features: [
-      { text: "1 workspace",          ok: true  },
-      { text: "3 projects",           ok: true  },
-      { text: "5 members",            ok: true  },
-      { text: "Kanban board",         ok: true  },
-      { text: "Code snippets",        ok: true  },
-      { text: "Wiki (basic)",         ok: true  },
-      { text: "AI features",          ok: false },
-      { text: "Unlimited projects",   ok: false },
-      { text: "Unlimited members",    ok: false },
-      { text: "Dev Pulse analytics",  ok: false },
-      { text: "Priority support",     ok: false },
+      { text: "1 workspace", ok: true },
+      { text: "3 projects", ok: true },
+      { text: "5 members", ok: true },
+      { text: "Kanban board", ok: true },
+      { text: "Code snippets", ok: true },
+      { text: "Wiki (basic)", ok: true },
+      { text: "AI features", ok: false },
+      { text: "Unlimited projects", ok: false },
+      { text: "Unlimited members", ok: false },
+      { text: "Dev Pulse analytics", ok: false },
+      { text: "Priority support", ok: false },
     ],
   },
   {
@@ -27,16 +27,16 @@ const PLANS = [
     color: "from-indigo-500 to-violet-600", badge: "Most Popular",
     features: [
       { text: "Unlimited workspaces", ok: true },
-      { text: "Unlimited projects",   ok: true },
-      { text: "Unlimited members",    ok: true },
-      { text: "Kanban board",         ok: true },
-      { text: "Code snippets",        ok: true },
-      { text: "Wiki (full)",          ok: true },
+      { text: "Unlimited projects", ok: true },
+      { text: "Unlimited members", ok: true },
+      { text: "Kanban board", ok: true },
+      { text: "Code snippets", ok: true },
+      { text: "Wiki (full)", ok: true },
       { text: "AI Project Assistant", ok: true },
-      { text: "AI Code Reviewer",     ok: true },
-      { text: "Dev Pulse analytics",  ok: true },
-      { text: "Priority support",     ok: true },
-      { text: "Custom integrations",  ok: true },
+      { text: "AI Code Reviewer", ok: true },
+      { text: "Dev Pulse analytics", ok: true },
+      { text: "Priority support", ok: true },
+      { text: "Custom integrations", ok: true },
     ],
   },
 ];
@@ -75,7 +75,7 @@ export default function PaymentsPage() {
         {/* Billing toggle */}
         <div className="flex justify-center">
           <div className="flex items-center gap-1 rounded-xl border border-gray-200 bg-white p-1 shadow-sm">
-            {["monthly","yearly"].map(b => (
+            {["monthly", "yearly"].map(b => (
               <motion.button key={b}
                 className={`rounded-lg px-5 py-2 text-sm font-semibold transition-colors ${billing === b ? "bg-indigo-600 text-white shadow-sm" : "text-gray-500 hover:text-gray-700"}`}
                 whileTap={{ scale: 0.96 }} onClick={() => setBilling(b)}>
@@ -124,8 +124,8 @@ export default function PaymentsPage() {
                       transition={{ delay: i * 0.1 + j * 0.04 }}>
                       <div className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full ${f.ok ? "bg-green-100" : "bg-gray-100"}`}>
                         {f.ok
-                          ? <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L3.5 7L8.5 2.5" stroke="#16a34a" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                          : <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 1l6 6M7 1L1 7" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                          ? <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L3.5 7L8.5 2.5" stroke="#16a34a" strokeWidth="1.5" strokeLinecap="round" /></svg>
+                          : <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 1l6 6M7 1L1 7" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" /></svg>
                         }
                       </div>
                       <span className={`text-sm ${f.ok ? "text-gray-700" : "text-gray-400"}`}>{f.text}</span>
@@ -137,7 +137,7 @@ export default function PaymentsPage() {
                 <div className="px-6 pb-6">
                   {isCurrent ? (
                     <div className="flex items-center justify-center gap-2 rounded-xl border-2 border-indigo-200 bg-indigo-50 py-3 text-sm font-semibold text-indigo-600">
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 7L5 10.5L12.5 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 7L5 10.5L12.5 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
                       Current Plan
                     </div>
                   ) : (
@@ -159,107 +159,106 @@ export default function PaymentsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Payment Methods */}
           <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm lg:col-span-1 h-fit">
-             <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-gray-900">Payment Methods</h3>
-                <button className="text-indigo-600 hover:text-indigo-700 p-1 bg-indigo-50 rounded-lg transition-colors">
-                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                </button>
-             </div>
-             
-             <div className="space-y-3">
-                {PAYMENT_METHODS.map((pm, i) => (
-                   <div key={i} className={`flex items-center justify-between p-3 rounded-xl border ${pm.isDefault ? 'border-indigo-100 bg-indigo-50/50' : 'border-gray-100'}`}>
-                      <div className="flex items-center gap-3">
-                         <div className="h-8 w-12 rounded bg-white border border-gray-200 flex items-center justify-center text-xl shadow-sm">
-                            {pm.type === "visa" ? "💳" : "🏦"}
-                         </div>
-                         <div>
-                            <p className="text-sm font-semibold text-gray-800">•••• {pm.last4}</p>
-                            <p className="text-[10px] text-gray-500">Expires {pm.expiry}</p>
-                         </div>
-                      </div>
-                      {pm.isDefault && <span className="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded-full">Default</span>}
-                   </div>
-                ))}
-             </div>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-bold text-gray-900">Payment Methods</h3>
+              <button className="text-indigo-600 hover:text-indigo-700 p-1 bg-indigo-50 rounded-lg transition-colors">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+              </button>
+            </div>
+            <div className="space-y-3">
+              {PAYMENT_METHODS.map((pm, i) => (
+                <div key={i} className={`flex items-center justify-between p-3 rounded-xl border ${pm.isDefault ? 'border-indigo-100 bg-indigo-50/50' : 'border-gray-100'}`}>
+                  <div className="flex items-center gap-3">
+                    <div className="h-8 w-12 rounded bg-white border border-gray-200 flex items-center justify-center text-xl shadow-sm">
+                      {pm.type === "visa" ? "💳" : "🏦"}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-800">•••• {pm.last4}</p>
+                      <p className="text-[10px] text-gray-500">Expires {pm.expiry}</p>
+                    </div>
+                  </div>
+                  {pm.isDefault && <span className="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded-full">Default</span>}
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Transaction History */}
-          <div className="rounded-2xl border border-gray-100 bg-white p-0 shadow-sm overflow-hidden lg:col-span-2">
-            <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
-               <h3 className="font-bold text-gray-900">Transaction History</h3>
-               <button className="text-xs font-semibold text-gray-500 flex items-center gap-1 hover:text-gray-800">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                  Download All
-               </button>
-            </div>
-            <div className="overflow-x-auto">
-               <table className="w-full text-left text-sm">
-                  <thead className="bg-gray-50/50 text-xs text-gray-400 uppercase tracking-wider">
-                     <tr>
-                        <th className="px-6 py-3 font-semibold">Invoice</th>
-                        <th className="px-6 py-3 font-semibold">Date</th>
-                        <th className="px-6 py-3 font-semibold">Plan</th>
-                        <th className="px-6 py-3 font-semibold text-right">Amount</th>
-                        <th className="px-6 py-3 font-semibold text-center">Status</th>
-                     </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                     {transactions.map((tx, i) => (
-                        <motion.tr key={tx.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="hover:bg-gray-50/50">
-                           <td className="px-6 py-4 font-mono text-xs text-gray-500">{tx.id}</td>
-                           <td className="px-6 py-4 text-gray-800">{tx.date}</td>
-                           <td className="px-6 py-4 text-gray-600">{tx.plan}</td>
-                           <td className="px-6 py-4 font-semibold text-gray-900 text-right">{tx.amount}</td>
-                           <td className="px-6 py-4 text-center">
-                              <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-[10px] font-bold text-green-700">
-                                 <div className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                                 {tx.status}
-                              </span>
-                           </td>
-                        </motion.tr>
-                     ))}
-                  </tbody>
-               </table>
-            </div>
-          </div>
+      {/* Transaction History */}
+      <div className="rounded-2xl border border-gray-100 bg-white p-0 shadow-sm overflow-hidden lg:col-span-2">
+        <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+          <h3 className="font-bold text-gray-900">Transaction History</h3>
+          <button className="text-xs font-semibold text-gray-500 flex items-center gap-1 hover:text-gray-800">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" /></svg>
+            Download All
+          </button>
         </div>
-
-        {/* FAQ */}
-        <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-          <h3 className="mb-4 font-bold text-gray-900">Frequently Asked Questions</h3>
-          <div className="space-y-3">
-            {[
-              ["Can I cancel anytime?", "Yes. Cancel anytime from your billing settings. You keep Pro access until the end of your billing period."],
-              ["Is there a free trial?", "The Free plan is free forever. Pro has a 14-day trial — no credit card required."],
-              ["What payment methods are accepted?", "Visa, Mastercard, American Express, and PayPal. All payments are processed securely via Razorpay."],
-              ["Can I switch plans mid-cycle?", "Yes. Upgrades are prorated immediately. Downgrades take effect at the next billing cycle."],
-            ].map(([q, a], i) => (
-              <motion.details key={i} className="group rounded-xl border border-gray-100 bg-gray-50"
-                initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.07 }}>
-                <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-semibold text-gray-800 list-none">
-                  {q}
-                  <svg className="transition-transform group-open:rotate-180" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M2 5l5 5 5-5" strokeLinecap="round"/>
-                  </svg>
-                </summary>
-                <p className="px-4 pb-3 text-sm text-gray-500">{a}</p>
-              </motion.details>
-            ))}
-          </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead className="bg-gray-50/50 text-xs text-gray-400 uppercase tracking-wider">
+              <tr>
+                <th className="px-6 py-3 font-semibold">Invoice</th>
+                <th className="px-6 py-3 font-semibold">Date</th>
+                <th className="px-6 py-3 font-semibold">Plan</th>
+                <th className="px-6 py-3 font-semibold text-right">Amount</th>
+                <th className="px-6 py-3 font-semibold text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {transactions.map((tx, i) => (
+                <motion.tr key={tx.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="hover:bg-gray-50/50">
+                  <td className="px-6 py-4 font-mono text-xs text-gray-500">{tx.id}</td>
+                  <td className="px-6 py-4 text-gray-800">{tx.date}</td>
+                  <td className="px-6 py-4 text-gray-600">{tx.plan}</td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 text-right">{tx.amount}</td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-[10px] font-bold text-green-700">
+                      <div className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                      {tx.status}
+                    </span>
+                  </td>
+                </motion.tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
 
-      <AnimatePresence>
-        {checkout && (
-           <StripeCheckoutModal 
-              plan={checkout} 
-              amount={billing === "yearly" ? Math.round(checkout.price * 0.8 * 12) : checkout.price}
-              onClose={() => setCheckout(null)} 
-              onSuccess={handlePaymentSuccess}
-           />
-        )}
-      </AnimatePresence>
-    </AppShell>
+        {/* FAQ */ }
+  <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+    <h3 className="mb-4 font-bold text-gray-900">Frequently Asked Questions</h3>
+    <div className="space-y-3">
+      {[
+        ["Can I cancel anytime?", "Yes. Cancel anytime from your billing settings. You keep Pro access until the end of your billing period."],
+        ["Is there a free trial?", "The Free plan is free forever. Pro has a 14-day trial — no credit card required."],
+        ["What payment methods are accepted?", "Visa, Mastercard, American Express, and PayPal. All payments are processed securely via Razorpay."],
+        ["Can I switch plans mid-cycle?", "Yes. Upgrades are prorated immediately. Downgrades take effect at the next billing cycle."],
+      ].map(([q, a], i) => (
+        <motion.details key={i} className="group rounded-xl border border-gray-100 bg-gray-50"
+          initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.07 }}>
+          <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-semibold text-gray-800 list-none">
+            {q}
+            <svg className="transition-transform group-open:rotate-180" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M2 5l5 5 5-5" strokeLinecap="round" />
+            </svg>
+          </summary>
+          <p className="px-4 pb-3 text-sm text-gray-500">{a}</p>
+        </motion.details>
+      ))}
+    </div>
+  </div>
+      </div >
+
+    <AnimatePresence>
+      {checkout && (
+        <StripeCheckoutModal
+          plan={checkout}
+          amount={billing === "yearly" ? Math.round(checkout.price * 0.8 * 12) : checkout.price}
+          onClose={() => setCheckout(null)}
+          onSuccess={handlePaymentSuccess}
+        />
+      )}
+    </AnimatePresence>
+    </AppShell >
   );
 }

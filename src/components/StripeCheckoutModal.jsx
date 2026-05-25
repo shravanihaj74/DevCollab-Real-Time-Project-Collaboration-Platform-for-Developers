@@ -17,7 +17,7 @@ function BrandIcon({ brand }) {
   if (brand === "visa") {
     return (
       <svg viewBox="0 0 60 20" style={{ height: 18, width: "auto" }}>
-        <text y="16" fontFamily="Arial,sans-serif" fontWeight="900" fontSize="18" fill="white" fontStyle="italic">
+        <text y="16" fontFamily="Arial,sans-serif" fontWeight="900" fontSize="18" fill="#1434CB" fontStyle="italic">
           VISA
         </text>
       </svg>
@@ -45,7 +45,7 @@ function BrandIcon({ brand }) {
   if (brand === "discover") {
     return (
       <svg viewBox="0 0 70 22" style={{ height: 16, width: "auto" }}>
-        <text y="16" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="11" fill="rgba(255,255,255,0.8)">
+        <text y="16" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="11" fill="#FF6000">
           DISCOVER
         </text>
       </svg>
@@ -53,7 +53,7 @@ function BrandIcon({ brand }) {
   }
   // Generic card icon
   return (
-    <svg width="22" height="16" viewBox="0 0 24 18" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5">
+    <svg width="22" height="16" viewBox="0 0 24 18" fill="none" stroke="#9ca3af" strokeWidth="1.5">
       <rect x="1" y="1" width="22" height="16" rx="2" />
       <path d="M1 6h22" />
     </svg>
@@ -200,10 +200,9 @@ function ProcessingPhase({ step }) {
   return (
     <motion.div
       key="processing"
-      className="flex flex-col items-center justify-center py-14 px-8"
+      className="flex flex-col items-center justify-center py-14 px-8 bg-white"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
     >
-      {/* Spinner ring */}
       <div className="relative mb-10">
         <motion.div
           className="h-20 w-20 rounded-full"
@@ -218,8 +217,6 @@ function ProcessingPhase({ step }) {
           </svg>
         </div>
       </div>
-
-      {/* Steps */}
       <div className="w-full space-y-3.5">
         {STEPS.map((s, i) => (
           <motion.div
@@ -229,7 +226,7 @@ function ProcessingPhase({ step }) {
             animate={{ opacity: step >= i ? 1 : 0.25, x: 0 }}
             transition={{ delay: i * 0.08 }}
           >
-            <div className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full transition-colors duration-500 ${step > i ? "bg-emerald-500" : step === i ? "bg-indigo-500" : "bg-white/10"}`}>
+            <div className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full transition-colors duration-500 ${step > i ? "bg-emerald-500" : step === i ? "bg-indigo-500" : "bg-gray-200"}`}>
               {step > i ? (
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                   <path d="M1.5 5L3.5 7L8.5 2.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
@@ -241,10 +238,10 @@ function ProcessingPhase({ step }) {
                   transition={{ duration: 0.8, repeat: Infinity }}
                 />
               ) : (
-                <div className="h-2 w-2 rounded-full bg-white/25" />
+                <div className="h-2 w-2 rounded-full bg-gray-400" />
               )}
             </div>
-            <span className={`text-sm ${step >= i ? "text-white" : "text-white/30"}`}>{s}</span>
+            <span className={`text-sm ${step >= i ? "text-gray-900" : "text-gray-400"}`}>{s}</span>
           </motion.div>
         ))}
       </div>
@@ -267,15 +264,13 @@ function SuccessPhase({ plan, amount, result, onClose }) {
   return (
     <motion.div
       key="success"
-      className="flex flex-col items-center py-10 px-7"
+      className="flex flex-col items-center py-10 px-7 bg-white"
       initial={{ opacity: 0, scale: 0.88 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ type: "spring", stiffness: 280, damping: 24 }}
     >
-      {/* Checkmark */}
       <motion.div
-        className="flex h-20 w-20 items-center justify-center rounded-full mb-5"
-        style={{ background: "rgba(16,185,129,0.15)" }}
+        className="flex h-20 w-20 items-center justify-center rounded-full mb-5 bg-emerald-100"
         animate={{ scale: [1, 1.08, 1] }}
         transition={{ duration: 0.6 }}
       >
@@ -293,28 +288,27 @@ function SuccessPhase({ plan, amount, result, onClose }) {
         </svg>
       </motion.div>
 
-      <h3 className="text-2xl font-extrabold text-white mb-1">Payment Successful!</h3>
-      <p className="text-white/50 text-sm mb-6 text-center">
+      <h3 className="text-2xl font-extrabold text-gray-900 mb-1">Payment Successful!</h3>
+      <p className="text-gray-500 text-sm mb-6 text-center">
         Welcome to DevCollab {plan.name}. All features are unlocked.
       </p>
 
-      {/* Invoice card */}
-      <div className="w-full rounded-2xl border border-white/10 p-5 space-y-3 text-sm" style={{ background: "rgba(255,255,255,0.04)" }}>
+      <div className="w-full rounded-2xl border border-gray-200 p-5 space-y-3 text-sm bg-gray-50">
         {rows.map(([label, value]) => (
           <div key={label} className="flex justify-between">
-            <span className="text-white/45">{label}</span>
-            <span className={`font-semibold ${label === "Status" ? "text-emerald-400" : "text-white"}`}>{value}</span>
+            <span className="text-gray-500">{label}</span>
+            <span className={`font-semibold ${label === "Status" ? "text-emerald-600" : "text-gray-900"}`}>{value}</span>
           </div>
         ))}
       </div>
 
-      <div className="mt-4 w-full rounded-xl border border-amber-500/25 px-4 py-2 text-[11px] text-amber-300 text-center" style={{ background: "rgba(245,158,11,0.08)" }}>
+      <div className="mt-4 w-full rounded-xl border border-amber-200 px-4 py-2 text-[11px] text-amber-700 text-center bg-amber-50">
         🧪 Sandbox transaction — no real charge was made
       </div>
 
       <motion.button
         className="mt-5 w-full rounded-xl py-3 text-sm font-semibold text-white shadow-lg"
-        style={{ background: "linear-gradient(135deg, #4f46e5, #7c3aed)", boxShadow: "0 8px 28px rgba(79,70,229,0.35)" }}
+        style={{ background: "linear-gradient(135deg, #4f46e5, #7c3aed)", boxShadow: "0 8px 28px rgba(79,70,229,0.25)" }}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         onClick={onClose}
@@ -332,23 +326,23 @@ function ThreeDSPhase({ message, onRetry, onClose }) {
   return (
     <motion.div
       key="3ds"
-      className="flex flex-col items-center py-10 px-7"
+      className="flex flex-col items-center py-10 px-7 bg-white"
       initial={{ opacity: 0, scale: 0.88 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ type: "spring", stiffness: 280, damping: 24 }}
     >
-      <div className="flex h-20 w-20 items-center justify-center rounded-full mb-5" style={{ background: "rgba(245,158,11,0.15)" }}>
+      <div className="flex h-20 w-20 items-center justify-center rounded-full mb-5 bg-amber-100">
         <span style={{ fontSize: 36 }}>🔐</span>
       </div>
-      <h3 className="text-xl font-extrabold text-white mb-2">3D Secure Required</h3>
-      <p className="text-white/50 text-sm text-center mb-6">{message}</p>
-      <div className="w-full rounded-xl border border-white/10 px-4 py-3 text-[11px] text-white/40 text-center" style={{ background: "rgba(255,255,255,0.04)" }}>
+      <h3 className="text-xl font-extrabold text-gray-900 mb-2">3D Secure Required</h3>
+      <p className="text-gray-500 text-sm text-center mb-6">{message}</p>
+      <div className="w-full rounded-xl border border-gray-200 px-4 py-3 text-[11px] text-gray-500 text-center bg-gray-50">
         💡 In sandbox mode, 3DS is simulated — try card{" "}
-        <span className="font-mono text-indigo-300">4242 4242 4242 4242</span> instead.
+        <span className="font-mono text-indigo-600">4242 4242 4242 4242</span> instead.
       </div>
       <div className="mt-5 flex w-full gap-3">
         <motion.button
-          className="flex-1 rounded-xl border border-white/10 py-3 text-sm font-medium text-white/60 hover:bg-white/5 transition-colors"
+          className="flex-1 rounded-xl border border-gray-200 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
           whileTap={{ scale: 0.97 }}
           onClick={onClose}
         >Cancel</motion.button>
@@ -371,12 +365,12 @@ function ErrorPhase({ message, onRetry, onClose }) {
   return (
     <motion.div
       key="error"
-      className="flex flex-col items-center py-10 px-7"
+      className="flex flex-col items-center py-10 px-7 bg-white"
       initial={{ opacity: 0, scale: 0.88 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ type: "spring", stiffness: 280, damping: 24 }}
     >
-      <div className="flex h-20 w-20 items-center justify-center rounded-full mb-5" style={{ background: "rgba(239,68,68,0.15)" }}>
+      <div className="flex h-20 w-20 items-center justify-center rounded-full mb-5 bg-red-100">
         <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
           <motion.path
             d="M9 9L25 25M25 9L9 25"
@@ -389,15 +383,15 @@ function ErrorPhase({ message, onRetry, onClose }) {
           />
         </svg>
       </div>
-      <h3 className="text-xl font-extrabold text-white mb-2">Payment Failed</h3>
-      <p className="text-white/55 text-sm text-center mb-5">{message || "Your payment could not be processed."}</p>
-      <div className="w-full rounded-xl border border-white/10 px-4 py-3 text-[11px] text-white/40 text-center" style={{ background: "rgba(255,255,255,0.04)" }}>
+      <h3 className="text-xl font-extrabold text-gray-900 mb-2">Payment Failed</h3>
+      <p className="text-gray-500 text-sm text-center mb-5">{message || "Your payment could not be processed."}</p>
+      <div className="w-full rounded-xl border border-gray-200 px-4 py-3 text-[11px] text-gray-500 text-center bg-gray-50">
         💡 Try test card{" "}
-        <span className="font-mono text-indigo-300">4242 4242 4242 4242</span> for a successful payment
+        <span className="font-mono text-indigo-600">4242 4242 4242 4242</span> for a successful payment
       </div>
       <div className="mt-5 flex w-full gap-3">
         <motion.button
-          className="flex-1 rounded-xl border border-white/10 py-3 text-sm font-medium text-white/60 hover:bg-white/5 transition-colors"
+          className="flex-1 rounded-xl border border-gray-200 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
           whileTap={{ scale: 0.97 }}
           onClick={onClose}
         >Cancel</motion.button>
@@ -417,16 +411,16 @@ function ErrorPhase({ message, onRetry, onClose }) {
    Status style map for test cards list
 ───────────────────────────────────────────────────── */
 const STATUS_STYLE = {
-  success:  { border: "rgba(16,185,129,0.25)",  bg: "rgba(16,185,129,0.08)",  dot: "#10b981", label: "Success"  },
-  declined: { border: "rgba(239,68,68,0.25)",   bg: "rgba(239,68,68,0.08)",   dot: "#ef4444", label: "Decline"  },
-  "3ds":    { border: "rgba(245,158,11,0.25)",  bg: "rgba(245,158,11,0.08)",  dot: "#f59e0b", label: "3DS"      },
+  success:  { border: "rgba(16,185,129,0.3)",  bg: "rgba(16,185,129,0.1)",  dot: "#10b981", label: "Success"  },
+  declined: { border: "rgba(239,68,68,0.3)",   bg: "rgba(239,68,68,0.1)",   dot: "#ef4444", label: "Decline"  },
+  "3ds":    { border: "rgba(245,158,11,0.3)",  bg: "rgba(245,158,11,0.1)",  dot: "#f59e0b", label: "3DS"      },
 };
 
 /* ═══════════════════════════════════════════════════════════════
    Main Checkout Modal
 ═══════════════════════════════════════════════════════════════ */
 export default function StripeCheckoutModal({ plan, amount, onClose, onSuccess }) {
-  const [phase, setPhase] = useState("form"); // "form"|"processing"|"success"|"error"|"3ds"
+  const [phase, setPhase] = useState("form");
   const [form, setForm] = useState({ name: "", number: "", expiry: "", cvv: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -471,12 +465,11 @@ export default function StripeCheckoutModal({ plan, amount, onClose, onSuccess }
     setErrors((e) => ({ ...e, [field]: errs[field] }));
   };
 
-  /* ── Fill from test card list ── */
   const fillTestCard = (card) => {
     const digits = card.number.replace(/\D/g, "");
     const b = detectBrand(digits);
     setForm({
-      name: "Test Cardholder",
+      name: "Rahul Kumar",
       number: formatCardInput(digits, b),
       expiry: "12/28",
       cvv: b === "amex" ? "1234" : "123",
@@ -486,7 +479,6 @@ export default function StripeCheckoutModal({ plan, amount, onClose, onSuccess }
     setShowTestCards(false);
   };
 
-  /* ── Submit ── */
   const handlePay = async () => {
     setTouched({ name: true, number: true, expiry: true, cvv: true });
     const errs = validateForm(form, brand);
@@ -525,17 +517,16 @@ export default function StripeCheckoutModal({ plan, amount, onClose, onSuccess }
     Object.keys(allErrs).length === 0 &&
     form.name && form.number && form.expiry && form.cvv;
 
-  /* ── Input class helper ── */
   const inputCls = (field) =>
-    `w-full rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/20 outline-none focus:ring-2 transition-all ${
+    `w-full rounded-[12px] px-4 py-3 text-[15px] text-gray-900 placeholder-gray-400 outline-none transition-all border ${
       errors[field] && touched[field]
-        ? "border border-red-500/50 focus:ring-red-500/20"
-        : "border border-white/10 focus:border-indigo-500/50 focus:ring-indigo-500/20"
+        ? "border-red-400 focus:ring-4 focus:ring-red-500/10"
+        : "border-blue-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300"
     }`;
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -543,74 +534,68 @@ export default function StripeCheckoutModal({ plan, amount, onClose, onSuccess }
     >
       <motion.div
         style={{
-          width: "100%", maxWidth: 448,
-          borderRadius: 24,
+          width: "100%", maxWidth: 420,
+          borderRadius: 20,
           overflow: "hidden",
-          background: "linear-gradient(160deg, #0f172a 0%, #1e1b4b 55%, #0f172a 100%)",
-          border: "1px solid rgba(255,255,255,0.08)",
-          boxShadow: "0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)",
+          background: "#ffffff",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
         }}
-        initial={{ scale: 0.88, y: 28, opacity: 0 }}
+        initial={{ scale: 0.9, y: 20, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
-        exit={{ scale: 0.88, y: 28, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 26 }}
+        exit={{ scale: 0.9, y: 20, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
       >
         <AnimatePresence mode="wait">
-
-          {/* ══ FORM PHASE ══ */}
           {phase === "form" && (
             <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               {/* Header */}
-              <div className="flex items-start justify-between px-7 pt-7 pb-3">
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-indigo-400 mb-0.5">Upgrading to</p>
-                  <h2 className="text-xl font-extrabold text-white">{plan.name} Plan</h2>
+              <div 
+                className="px-6 pt-6 pb-5"
+                style={{ background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)" }}
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-indigo-100 mb-1">Upgrading to</p>
+                    <h2 className="text-2xl font-extrabold text-white">{plan.name} Plan</h2>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-3xl font-extrabold text-white">${amount}</p>
+                    <p className="text-xs text-indigo-100 font-medium">{plan.period}</p>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-2xl font-extrabold text-white">${amount}</p>
-                  <p className="text-xs text-white/40">{plan.period}</p>
+                
+                {/* Sandbox badge */}
+                <div 
+                  className="mt-5 inline-flex items-center gap-2 rounded-[10px] px-4 py-2.5 w-full" 
+                  style={{ background: "rgba(255,255,255,0.2)" }}
+                >
+                  <span className="text-sm">🧪</span>
+                  <p className="text-[13px] font-bold text-white">Sandbox Mode — no real charges</p>
                 </div>
-              </div>
-
-              {/* Sandbox badge */}
-              <div className="mx-7 mb-5 flex items-center gap-2.5 rounded-xl border border-amber-500/20 px-3 py-2" style={{ background: "rgba(245,158,11,0.08)" }}>
-                <motion.div
-                  className="h-2 w-2 flex-shrink-0 rounded-full bg-amber-400"
-                  animate={{ scale: [1, 1.5, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-                <p className="text-xs font-semibold text-amber-300">🧪 Razorpay Sandbox Mode — no real charges</p>
-                <div className="ml-auto flex items-center gap-1 text-[10px] text-white/25">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                  TLS 256-bit
-                </div>
-              </div>
-
-              {/* 3-D card preview */}
-              <div className="px-7 mb-5">
-                <CardPreview form={form} brand={brand} isFlipped={cvvFocused} />
               </div>
 
               {/* Form */}
-              <div className="px-7 space-y-3.5">
+              <div className="px-6 py-6 space-y-4 bg-white">
+                {/* 3-D card preview */}
+                <div className="mb-4">
+                  <CardPreview form={form} brand={brand} isFlipped={cvvFocused} />
+                </div>
+
                 {/* Cardholder name */}
                 <div>
-                  <label className="mb-1.5 block text-[10px] font-bold uppercase tracking-widest text-white/40">Cardholder Name</label>
+                  <label className="mb-2 block text-[13px] font-bold text-gray-500">Cardholder Name</label>
                   <input
                     id="pay-name"
                     autoComplete="cc-name"
                     className={inputCls("name")}
-                    style={{ background: "rgba(255,255,255,0.05)" }}
                     placeholder="Rahul Kumar"
                     value={form.name}
                     onChange={(e) => update("name", e.target.value)}
                     onBlur={() => blur("name")}
                   />
                   {errors.name && touched.name && (
-                    <motion.p className="mt-1 text-xs text-red-400" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}>
+                    <motion.p className="mt-1 text-xs text-red-500" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}>
                       {errors.name}
                     </motion.p>
                   )}
@@ -618,14 +603,13 @@ export default function StripeCheckoutModal({ plan, amount, onClose, onSuccess }
 
                 {/* Card number */}
                 <div>
-                  <label className="mb-1.5 block text-[10px] font-bold uppercase tracking-widest text-white/40">Card Number</label>
+                  <label className="mb-2 block text-[13px] font-bold text-gray-500">Card Number</label>
                   <div className="relative">
                     <input
                       id="pay-number"
                       autoComplete="cc-number"
                       inputMode="numeric"
                       className={`${inputCls("number")} font-mono pr-12`}
-                      style={{ background: "rgba(255,255,255,0.05)" }}
                       placeholder="4242 4242 4242 4242"
                       value={form.number}
                       onChange={handleNumber}
@@ -636,35 +620,34 @@ export default function StripeCheckoutModal({ plan, amount, onClose, onSuccess }
                     </div>
                   </div>
                   {errors.number && touched.number && (
-                    <motion.p className="mt-1 text-xs text-red-400" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}>
+                    <motion.p className="mt-1 text-xs text-red-500" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}>
                       {errors.number}
                     </motion.p>
                   )}
                 </div>
 
                 {/* Expiry + CVV */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="mb-1.5 block text-[10px] font-bold uppercase tracking-widest text-white/40">Expiry</label>
+                    <label className="mb-2 block text-[13px] font-bold text-gray-500">Expiry</label>
                     <input
                       id="pay-expiry"
                       autoComplete="cc-exp"
                       inputMode="numeric"
                       className={`${inputCls("expiry")} font-mono`}
-                      style={{ background: "rgba(255,255,255,0.05)" }}
                       placeholder="MM/YY"
                       value={form.expiry}
                       onChange={handleExpiry}
                       onBlur={() => blur("expiry")}
                     />
                     {errors.expiry && touched.expiry && (
-                      <motion.p className="mt-1 text-xs text-red-400" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}>
+                      <motion.p className="mt-1 text-xs text-red-500" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}>
                         {errors.expiry}
                       </motion.p>
                     )}
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-[10px] font-bold uppercase tracking-widest text-white/40">
+                    <label className="mb-2 block text-[13px] font-bold text-gray-500">
                       CVV {brand === "amex" ? "(4 digits)" : ""}
                     </label>
                     <input
@@ -672,112 +655,98 @@ export default function StripeCheckoutModal({ plan, amount, onClose, onSuccess }
                       autoComplete="cc-csc"
                       inputMode="numeric"
                       className={`${inputCls("cvv")} font-mono`}
-                      style={{ background: "rgba(255,255,255,0.05)" }}
                       placeholder={brand === "amex" ? "1234" : "123"}
                       value={form.cvv}
                       onChange={handleCvv}
                       onFocus={() => setCvvFocused(true)}
-                      onBlur={() => { setCvvFocused(false); blur("cvv"); }}
+                      onBlur={() => { blur("cvv"); setCvvFocused(false); }}
                     />
                     {errors.cvv && touched.cvv && (
-                      <motion.p className="mt-1 text-xs text-red-400" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}>
+                      <motion.p className="mt-1 text-xs text-red-500" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}>
                         {errors.cvv}
                       </motion.p>
                     )}
                   </div>
                 </div>
-              </div>
 
-              {/* Test cards panel */}
-              <div className="px-7 mt-4">
-                <button
-                  id="toggle-test-cards"
-                  className="flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-left transition-colors hover:bg-white/5"
-                  style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)" }}
-                  onClick={() => setShowTestCards((s) => !s)}
-                >
-                  <span className="text-xs font-semibold text-white/50">🧪 Razorpay Test Card Numbers</span>
-                  <motion.svg
-                    className="text-white/30"
-                    width="12" height="12" viewBox="0 0 12 12"
-                    animate={{ rotate: showTestCards ? 180 : 0 }}
-                    fill="none" stroke="currentColor" strokeWidth="2"
+                {/* Test cards panel */}
+                <div className="mt-2">
+                  <button
+                    id="toggle-test-cards"
+                    className="flex w-full items-center justify-between rounded-[10px] px-2 py-1.5 text-left transition-colors hover:bg-gray-50"
+                    onClick={() => setShowTestCards((s) => !s)}
                   >
-                    <path d="M2 4l4 4 4-4" strokeLinecap="round" />
-                  </motion.svg>
-                </button>
+                    <span className="text-[11px] font-semibold text-gray-400">🧪 View Test Cards</span>
+                  </button>
 
-                <AnimatePresence>
-                  {showTestCards && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.22 }}
-                      style={{ overflow: "hidden" }}
-                    >
-                      <div className="mt-2 space-y-1.5 pb-1">
-                        {TEST_CARDS.map((card, i) => {
-                          const s = STATUS_STYLE[card.status];
-                          return (
-                            <motion.button
-                              key={i}
-                              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all hover:brightness-125"
-                              style={{ background: s.bg, border: `1px solid ${s.border}` }}
-                              initial={{ opacity: 0, x: -8 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: i * 0.04 }}
-                              onClick={() => fillTestCard(card)}
-                            >
-                              <div className="h-2 w-2 flex-shrink-0 rounded-full" style={{ background: s.dot }} />
-                              <div className="flex-1 min-w-0">
-                                <p className="font-mono text-xs text-white/80">{card.number}</p>
-                                <p className="text-[10px] text-white/35">{card.label} · {card.sub}</p>
-                              </div>
-                              <span className="text-[10px] font-medium text-white/25">↗ Fill</span>
-                            </motion.button>
-                          );
-                        })}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                  <AnimatePresence>
+                    {showTestCards && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.22 }}
+                        style={{ overflow: "hidden" }}
+                      >
+                        <div className="mt-2 space-y-1.5 pb-1">
+                          {TEST_CARDS.map((card, i) => {
+                            const s = STATUS_STYLE[card.status];
+                            return (
+                              <motion.button
+                                key={i}
+                                className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all hover:bg-gray-50"
+                                style={{ background: "white", border: `1px solid ${s.border}` }}
+                                initial={{ opacity: 0, x: -8 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.04 }}
+                                onClick={() => fillTestCard(card)}
+                              >
+                                <div className="h-2 w-2 flex-shrink-0 rounded-full" style={{ background: s.dot }} />
+                                <div className="flex-1 min-w-0">
+                                  <p className="font-mono text-xs text-gray-700">{card.number}</p>
+                                  <p className="text-[10px] text-gray-500">{card.label} · {card.sub}</p>
+                                </div>
+                                <span className="text-[10px] font-medium text-gray-400">↗ Fill</span>
+                              </motion.button>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <p className="pt-2 text-center text-[12px] font-medium text-gray-400 flex items-center justify-center gap-1.5">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                  Secured with 256-bit SSL encryption · Sandbox checkout
+                </p>
+
+                {/* Footer buttons */}
+                <div className="pt-3 flex gap-3">
+                  <motion.button
+                    id="pay-cancel"
+                    className="flex-1 rounded-[14px] border border-gray-200 py-3 text-[15px] font-bold text-gray-600 transition-colors hover:bg-gray-50 bg-white"
+                    whileTap={{ scale: 0.97 }}
+                    onClick={onClose}
+                  >
+                    Cancel
+                  </motion.button>
+                  <motion.button
+                    id="pay-submit"
+                    className={`flex-1 rounded-[14px] py-3 text-[15px] font-bold text-white transition-all ${
+                      isValid ? "bg-indigo-600 shadow-md hover:bg-indigo-700 cursor-pointer" : "bg-gray-200 cursor-not-allowed"
+                    }`}
+                    whileHover={isValid ? { scale: 1.02 } : {}}
+                    whileTap={isValid ? { scale: 0.97 } : {}}
+                    onClick={isValid ? handlePay : undefined}
+                  >
+                    Pay ${amount}/mo
+                  </motion.button>
+                </div>
               </div>
-
-              {/* Footer buttons */}
-              <div className="px-7 pt-4 pb-5 mt-2 flex gap-3 border-t border-white/5">
-                <motion.button
-                  id="pay-cancel"
-                  className="flex-1 rounded-xl border border-white/10 py-3 text-sm font-medium text-white/55 transition-colors hover:bg-white/5"
-                  whileTap={{ scale: 0.97 }}
-                  onClick={onClose}
-                >
-                  Cancel
-                </motion.button>
-                <motion.button
-                  id="pay-submit"
-                  className={`flex-1 rounded-xl py-3 text-sm font-semibold text-white shadow-lg transition-all ${
-                    isValid ? "cursor-pointer" : "cursor-not-allowed opacity-40"
-                  }`}
-                  style={isValid ? {
-                    background: "linear-gradient(135deg, #4f46e5, #7c3aed)",
-                    boxShadow: "0 8px 28px rgba(79,70,229,0.4)",
-                  } : { background: "rgba(255,255,255,0.12)" }}
-                  whileHover={isValid ? { scale: 1.03 } : {}}
-                  whileTap={isValid ? { scale: 0.97 } : {}}
-                  onClick={isValid ? handlePay : undefined}
-                >
-                  Pay ${amount}/mo
-                </motion.button>
-              </div>
-
-              <p className="pb-5 text-center text-[10px] text-white/18 flex items-center justify-center gap-1.5">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="3" y="11" width="18" height="11" rx="2" />
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
-                Secured · Razorpay Sandbox · 256-bit SSL
-              </p>
             </motion.div>
           )}
 
