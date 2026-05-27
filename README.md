@@ -290,17 +290,6 @@ A workspace summary header shows team-wide average burnout, total tasks complete
 
 ---
 
-## 🧪 Test Account
-
-```
-Email    →  testuser@devcollab.demo
-Password →  Test@1234
-```
-
-> If the test account is unavailable, sign up with any email — account creation is instant with no email verification required.
-
----
-
 ## 💳 Test Card Details
 
 <div align="center">
